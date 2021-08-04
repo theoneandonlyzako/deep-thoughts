@@ -9,16 +9,17 @@ const resolvers = {
     Query: {
         // jwt me
         me: async (parent, args, context) => {
-            if (Context.user) {
-                const userData = await User.findOne({})
-                    .setlect('/-__v -password')
-                    .populate('thoughts')
-                    .populate('friends');
-
-                return userData;
+            if (context.user) {
+              const userData = await User.findOne({ _id: context.user._id })
+                .select('-__v -password')
+                .populate('thoughts')
+                .populate('friends');
+          
+              return userData;
             }
-            throw new AuthenticationError('Not Logged In!');
-        },
+          
+            throw new AuthenticationError('Not logged in');
+          },
 
         // get all users
         users: async () => {
