@@ -3,7 +3,7 @@ import Auth from '../utils/auth';
 import { Redirect, useParams } from 'react-router-dom';
 import { ADD_FRIEND } from '../utils/mutations';
 import ThoughtList from '../components/ThoughtList';
-
+import ThoughtForm from '../components/ThoughtForm';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -72,6 +72,7 @@ const Profile = () => {
           />
         </div>
       </div>
+      <div className="mb-3">{!userParam && <ThoughtForm />}</div>
     </div>
   );
 };
