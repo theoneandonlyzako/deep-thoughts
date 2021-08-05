@@ -37,6 +37,7 @@ const resolvers = {
         },
 
         thoughts: async (parent, { username }) => {
+            // console.log('Zaks HERE')
             const params = username ? { username } : {};
             return Thought.find(params).sort({ createdAt: -1 });
         },
